@@ -17,7 +17,7 @@ Ship the work, not the performance of working.
 
 **Shape.** Add a layer, an interface, a config flag or a wrapper when there are two real implementations or a real boundary. One call site does not need a framework. Delete the unused branch, the extra indirection and the half-finished abstraction you were proud of.
 
-**Prose.** Short sentences. No filler ("in order to", "it is worth noting"). No chatbot closings. No claim without a command, a path or a labelled guess. Prefer the plain word.
+**Prose.** Short sentences. No filler ("in order to", "it is worth noting"). No chatbot closings. No claim without a command, a path or a labelled guess. Prefer the plain word. For a full prose de-slop on request, use `unslop`.
 
 **Extras.** Do not repair neighbours, restyle untouched files or invent features the request did not contain. If you see dirt, mention it; do not sweep it into this diff.
 
