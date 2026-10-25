@@ -1,6 +1,6 @@
 # Notice
 
-ork-skills is original text, written for this repository. It is not a fork and does not copy skill bodies from the works below. If you use ork-skills, you must also respect their licences for any of *their* files you take yourself. The engineering skills drew on MIT works. The security skills drew on a mix of MIT, Apache-2.0, CC-BY-SA-4.0 (ideas only), and the Semgrep Rules License (no rules or text); each is listed in its own section.
+ork-skills is original text, written for this repository. It is not a fork and does not copy skill bodies from the works below, except for the pstack unslop adaptation named in the exception in the pstack section. If you use ork-skills, you must also respect their licences for any of *their* files you take yourself. The engineering skills drew on MIT works. The security skills drew on a mix of MIT, Apache-2.0, CC-BY-SA-4.0 (ideas only), and the Semgrep Rules License (no rules or text); each is listed in its own section.
 
 ## pstack
 
@@ -19,6 +19,45 @@ Ideas we rewrote, rather than files we copied:
 | `verify` | Check the real artefact; a compile is not proof |
 | `perf` | Measure before you change; report the same measurement after |
 | `principles` (no slop) | Cut filler comments, vague names and extra machinery |
+
+### Exception: adapted unslop text
+
+`skills/unslop/references/patterns.md` (and any adapted unslop text in `skills/unslop/SKILL.md`, including the Adding soul section) contains text adapted from [pstack unslop](https://github.com/cursor/plugins/blob/main/pstack/skills/unslop/SKILL.md) (MIT, © 2026 Lauren Tan). That adapted text is kept under the notice below, not as a silent copy.
+
+MIT License
+
+Copyright (c) 2026 Lauren Tan
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+## theclaymethod/unslop
+
+- Project: [theclaymethod/unslop](https://github.com/theclaymethod/unslop)
+- Licence: none published (GitHub `license` metadata is null)
+
+**Inspiration only. No text.** The flag-only (audit) mode, the fact-preservation guards, and extra tells 34–41 in `skills/unslop/references/patterns.md` were rewritten in our own words from ideas in that repository. We did not copy or paraphrase its files.
+
+## Skills moved from arkaydeus/skills
+
+`bun-testing` and `website-audit` are Ark's own MIT work, moved unchanged from [arkaydeus/skills](https://github.com/arkaydeus/skills). `unslop` is the merged skill described above (pstack text kept with credit; claymethod ideas rewritten).
+
+`website-audit` credits [Florence (@flxrnc)](https://x.com/flxrnc) and [damkin (@damkina7)](https://x.com/damkina7).
 
 ## Matt Pocock's skills
 
