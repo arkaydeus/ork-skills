@@ -27,7 +27,7 @@ If the session cannot spawn subagents, or cannot pick another model, run the per
 
 Personas when you must run sequentially:
 
-- **Break it.** Hunt for wrong behaviour, missed edges, races, bad error paths and security holes. Ignore taste.
+- **Break it.** Hunt for wrong behaviour, missed edges, races, bad error paths and security holes. Ignore taste. For a security-sensitive change, load the `security-review` skill and follow it.
 - **Shape it.** Hunt for blurred boundaries, names that lie, extra layers and duplication. Ignore nits that do not change the design.
 - **Ship it.** Hunt for missing proof: no test for the new risk, a UI path not exercised, a migration that cannot be reversed.
 
