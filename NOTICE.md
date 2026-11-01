@@ -1,6 +1,6 @@
 # Notice
 
-ork-skills is original text, written for this repository. It is not a fork and does not copy skill bodies from the works below, except for the pstack unslop adaptation named in the exception in the pstack section. If you use ork-skills, you must also respect their licences for any of *their* files you take yourself. The engineering skills drew on MIT works. The security skills drew on a mix of MIT, Apache-2.0, CC-BY-SA-4.0 (ideas only), and the Semgrep Rules License (no rules or text); each is listed in its own section.
+ork-skills is original text, written for this repository. It is not a fork and does not copy skill bodies from the works below, except for the pstack unslop adaptation named in the exception in the pstack section. If you use ork-skills, you must also respect their licences for any of *their* files you take yourself. The engineering skills drew on MIT works. The security skills drew on a mix of MIT, Apache-2.0, CC-BY-SA-4.0 (ideas only), and the Semgrep Rules License (no rules or text); each is listed in its own section. `motion` drew on unlicensed X articles (ideas only) and Robert Penner's MIT easing equations.
 
 ## pstack
 
@@ -55,9 +55,9 @@ SOFTWARE.
 
 ## Skills moved from arkaydeus/skills
 
-`bun-testing` and `website-audit` are Ark's own MIT work, moved unchanged from [arkaydeus/skills](https://github.com/arkaydeus/skills). `unslop` is the merged skill described above (pstack text kept with credit; claymethod ideas rewritten).
+`bun-testing` and `website-audit` are Ark's own MIT work, moved unchanged from [arkaydeus/skills](https://github.com/arkaydeus/skills). `unslop` is the merged skill described above (pstack text kept with credit; claymethod ideas rewritten). `motion` is Ark's MIT skill, moved from the same repository as an ideas-only rewrite of the sources listed in the motion section below; we did not copy article prose, inlined scripts, or GPL easing tables.
 
-`website-audit` credits [Florence (@flxrnc)](https://x.com/flxrnc) and [damkin (@damkina7)](https://x.com/damkina7).
+`website-audit` credits [Florence (@flxrnc)](https://x.com/flxrnc) and [damkin (@damkina7)](https://x.com/damkina7). `motion` credits the same two authors as ideas only; see the motion section.
 
 ## Matt Pocock's skills
 
@@ -146,9 +146,81 @@ Ideas we rewrote: a diff-scoped security pass that prefers exploitable bugs over
 
 **No rules and no text.** We do not vendor Semgrep rules, query packs, or skill prose from that repository. `security-scan` only tells the agent to invoke an already-installed Semgrep CLI against the public registry (for example `semgrep scan --config auto`) and to triage the output.
 
+## motion
+
+`motion` (`skills/motion/`) is original MIT text. We read public write-ups for **ideas** (code-first `seek(t)` capture, a directed brief, banned defaults, closed-form springs, a critique loop, synthesised sound on a beat grid, a workspace fence, quoting from scope). We did not copy their files, wording, prompts, or scripts.
+
+Licences below were checked against each source on 2026-11-01.
+
+### Florence (@flxrnc)
+
+- Article: [Opus 5.5 Motion Lab: Make Claude Animate Like a Studio](https://x.com/flxrnc/article/2105311836190978392)
+- Licence: none published (X article)
+
+**Ideas only. No text.** Ideas we rewrote: a directed brief with named fields; a capture contract so every frame is a function of time; banned AI-motion defaults; one hero per shot; a render-look-fix loop on real frames; engine picking; loop frames 0…N−1; GIF delay rounding.
+
+We did not vendor that article's prompts, `render.mjs`, freeze snippet, contact-sheet commands as printed, or cubic-bezier table.
+
+### damkin (@damkina7)
+
+- Article: [Autonomous Motion Studio on Claude Opus 5.5: From seek(t) Architecture to Your First $500 Reel](https://x.com/damkina7/article/2107924159397560795)
+- Licence: none published (X article)
+
+**Ideas only. No text.** Ideas we rewrote: timers banned so capture can jump to any `t`; video-diffusion kept off UI and type; four job shapes (drawn in code, composition framework, overlay, texture only); shared picture/sound timestamps; overnight stop conditions; quote from duration, aspects, and revisions rather than a viral rate card.
+
+We did not vendor that article's dashboard storyboard, click synthesizer, inspection prompt, seven-layer names, marketplace prices as a rate card, or Telegram invite. Published dollar figures stay labelled as unverified anecdotes in `references/pricing.md` and `references/harness.md`.
+
+### Thomas and Johnston, *The Illusion of Life* (1981)
+
+- Work: Frank Thomas and Ollie Johnston, *The Illusion of Life: Disney Animation* (1981)
+- Licence: All rights reserved
+
+**Ideas only. No book text.** `skills/motion/references/principles.md` turns widely known character-animation principles into numbered prompt lines (part, duration, magnitude). We did not copy the book's wording or illustrations.
+
+### Robert Penner easing equations
+
+- Project: [Easing functions (equations)](https://robertpenner.com/easing_terms_of_use.html)
+- Licence: MIT (also offered as 3-Clause BSD)
+- Copyright: © 2001 Robert Penner
+
+`skills/motion/references/maths.md` includes compact JavaScript implementations of Penner's ease-out expo/quint, ease-in-out quart, ease-in expo, and ease-out back, plus the classic 1.70158 overshoot constant. That adapted code is kept under the notice below.
+
+MIT License
+
+Copyright (c) 2001 Robert Penner
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+### easings.net (not copied)
+
+- Project: [ai/easings.net](https://github.com/ai/easings.net)
+- Licence: GPL-3.0
+
+**No snippets and no cubic-bezier table.** That site is copyleft. We did not vendor its YAML, CSS approximations, or prose. Named eases in `maths.md` are Penner's, with GSAP family names as a crosswalk.
+
+### Other facts, not files
+
+Engine licence lines in `references/engines.md` (GSAP, Motion/MIT, three.js/MIT, Remotion company licence, HyperFrames Apache-2.0) are current-terms reminders, not copies of those projects. Contrast floors 4.5:1 / 3:1 and the three-flashes-per-second cap are WCAG figures, cited as numbers only.
+
 ## What we left out
 
-We did not add a TDD skill. We did not add a "small diffs" principle. We did not take pstack's Cursor-only setup, model tables, or generated harness trees. We did not take Matt's issue-tracker setup, ticket graph or plugin manifests.
+We did not add a TDD skill. We did not add a "small diffs" principle. We did not take pstack's Cursor-only setup, model tables, or generated harness trees. We did not take Matt's issue-tracker setup, ticket graph or plugin manifests. We did not vendor easings.net (GPL-3.0) cubic-bezier tables or JavaScript snippets. We did not copy Florence or damkin article prose, prompts, or inlined scripts. We did not include damkin's Telegram invite or treat published client prices as a rate card.
 
 ## Our licence
 
