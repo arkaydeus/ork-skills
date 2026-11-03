@@ -32,7 +32,13 @@ CAPTURE CONTRACT (follow exactly)
    made with OfflineAudioContext at 48000 Hz, exactly DURATION long.
 ```
 
+When a critique fix holds, add the rule to this contract so the next piece inherits it.
+
 Ban `setTimeout`, `setInterval`, and unconstrained rAF as the source of motion. Live preview may use rAF only as a clock that calls `render((now - start) / 1000)`.
+
+### Iteration overlays
+
+During iteration, draw a **frame counter**, a **playhead**, and labels for beats or principles. Notes can then name exact frames. Turn them all off for the final capture (`?render=1`, or a `DEBUG` flag that `seek` respects). Do not leave them in the master.
 
 `seek(t)` is the whole engine: jump to frame 812 without playing 0–811, capture after paint, and stay deterministic if the host CPU throttles.
 
@@ -239,14 +245,19 @@ ffmpeg -y -i out/scene.mp4 -vf "select='not(mod(n\,30))',scale=270:-1,tile=6x2" 
 ffmpeg -y -ss 2 -i out/scene.mp4 -vf "tmix=frames=8" -frames:v 1 out/onion.png
 ```
 
-Contact sheets show composition and pacing. Onion skins show spacing: bunched ghosts are slow, even spacing at the ends of a move means there is no easing. Translate what you see into numbered follow-ups in `references/critique.md`.
+Contact sheets show composition and pacing. Onion skins show spacing: bunched ghosts are slow, even spacing at the ends of a move means there is no easing. Translate what you see into numbered follow-ups in `references/critique.md`. If a patch does not hold, capture frames N−1 and N+1 and list the differences; see `references/critique.md`.
+
+## Motion blur (optional, 3D)
+
+For GPU captures, average several subframes spread across **half a frame**, blended in **linear light**. That is a **180°** shutter. Skip this on flat UI type: it will smear letters.
 
 ## Troubleshooting
 
 | Symptom | Likely cause | Fix |
 | --- | --- | --- |
-| Flicker or jitter | State carried between frames, wall clock leaking into capture mode, unseeded randomness, or z-fighting | Make `render(t)` pure; seed the PRNG; separate coplanar surfaces; raise the camera near plane |
-| Wrong or fallback font | Screenshot before the face loaded, or a dead URL | Embed or pin the font; await `document.fonts.load()` and `document.fonts.ready`; then set `__ready` |
+| Flicker or jitter | State carried between frames, wall clock leaking into capture mode, unseeded randomness, leftover CSS transitions, or z-fighting | Make `render(t)` pure; seed the PRNG; **remove CSS transitions**; separate coplanar surfaces; raise the camera near plane |
+| Wrong or fallback font | Screenshot before the face loaded, or a dead URL | Load the face with `display=block` (or equivalent); embed or pin the URL; await `document.fonts.load()` and `document.fonts.ready`; then set `__ready` |
+| Jank or dropped live frames | Animating layout properties (`width`, `height`, `top`, `left`) | Animate only **transform** and **opacity** |
 | Hiccup at the loop seam | Frame N included, or periodic motion not completing whole cycles | Capture 0…N−1; `phase = (t % D) / D` with integer cycles; check N−1 into 0 |
 | Audio drifts | `-framerate` ≠ capture fps, or WAV length ≠ `DURATION` | Same fps everywhere; `OfflineAudioContext` exactly `DURATION`; `-shortest` |
 | Dropped or repeated frames | Screen-recording, or screenshot before paint | Use this script; two rAF waits; frame count = fps × duration |

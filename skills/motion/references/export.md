@@ -24,7 +24,23 @@ Math.sin(phase * 2 * Math.PI * k)  // k an integer
 
 Eased moves must return. Anything that leaves frame 0's pose must be back by frame N−1, or designed as a hand-off into a still end card (in which case it is not a loop; do not advertise it as one).
 
+Frame 0 must be a **finished composition**. It is the first thing on screen while a GIF loads; do not open on an empty field or a mid-move pose.
+
+For organic drift, sample noise along a **circle** so phase 0 and phase 1 meet:
+
+```js
+// Seeded 2D noise; walking a circle makes phase 0 and 1 match
+const a = phase * 2 * Math.PI;
+const drift = noise2D(Math.cos(a), Math.sin(a));
+```
+
 Verify by putting frames 0, 1, N−2, and N−1 on a sheet. If N−1 does not flow into 0, fix motion before you re-encode.
+
+Play the file three times back to back and watch the seam:
+
+```bash
+ffmpeg -y -stream_loop 2 -i out/scene.mp4 -c copy out/loop_check.mp4
+```
 
 ## Export for X
 
@@ -33,7 +49,7 @@ Limits change. Check current help before a paid delivery. The working defaults:
 | Format | Settings |
 | --- | --- |
 | Video (prefer this) | MP4, H.264 High profile, yuv420p, AAC audio, up to 60 fps. 1920×1080 for 16:9, 1080×1080 for square, 1080×1350 for 4:5, 1080×1920 for 9:16. Length up to 140 seconds without Premium. Even width and height. |
-| GIF | 15 MB limit. About 1200 px wide at most; 800 px is often enough. One global palette. **25 or 50 fps, not 60.** |
+| GIF | 15 MB limit. At most **350 frames** and **1280×1080** (about 1200 px wide is plenty). One global palette. **25 or 50 fps, not 60.** Optional 24 fps: see delay rounding below. |
 
 Master encode (picture only shown; add audio as in `references/sound.md`):
 
@@ -47,7 +63,7 @@ Client reels usually need **both** a 16:9 master and a 9:16 cut. Design the hero
 
 ### Why not a 60 fps GIF
 
-GIF frame delays are stored in hundredths of a second. 60 fps needs 1.67 hundredths, which cannot be stored, so players round and the speed goes wrong. 50 fps (2 hundredths) and 25 fps (4 hundredths) divide evenly. Some browsers treat very short delays as slow ones, so 25 fps is the safer GIF. If the GIF is still over 15 MB, reduce width before frame rate. Prefer posting the MP4: smaller, sharper, real 60 fps.
+GIF frame delays are stored in hundredths of a second. 60 fps needs 1.67 hundredths, which cannot be stored, so players round and the speed goes wrong. 50 fps (2 hundredths) and 25 fps (4 hundredths) divide evenly. Some browsers treat very short delays as slow ones, so 25 fps is the safer GIF. If you must ship **24 fps**, a frame is 41.7 ms, which also will not store: five frames at **40 ms** then one at **50 ms** keeps a 6 s loop at 6.00 s. If the GIF is still over 15 MB, reduce width before frame rate. Prefer posting the MP4: smaller, sharper, real 60 fps. At 24 fps the 350-frame cap is about 14.5 s; a 4–6 s loop sits well under it.
 
 ```bash
 ffmpeg -y -i out/scene.mp4 -vf "fps=25,scale=1200:-1:flags=lanczos,\

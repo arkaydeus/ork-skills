@@ -57,8 +57,8 @@ These apply to every job. References repeat the details.
 
 - Animation is `render(t)` with `t` in seconds. Ban `setTimeout`, `setInterval`, and any use of the wall clock or `requestAnimationFrame` timestamps to decide what is on screen. Live preview may use rAF only to call `render`.
 - One self-contained HTML file (or one Remotion composition) per piece. Pin CDN libraries to an exact version.
-- One hero per shot. Rank secondary motion 1, 2, 3.
-- Ban the defaults: purple or blue gradients, glow, bloom, lens flares, generic particle fields, fade-and-slide-up on every element, everything centred, text that moves while it is being read.
+- One hero per shot. Rank secondary motion 1, 2, 3 (50–70% of the hero's travel, 100–200 ms later). See `references/principles.md`.
+- Ban the defaults: purple or blue gradients, glow, bloom, neon, glow orbs, lens flares, generic particle fields, spinning turntables, fade-and-slide-up, everything fading in at once, everything centred, dark-on-dark, text that moves while it is being read. After the first render, add whatever the model used anyway. Full list in `references/brief.md`.
 - Springs are closed-form. Do not Euler-step. See `references/maths.md`.
 - Prefer a damping-ratio target over copied preset tables. Published client prices disagree with each other; see `references/pricing.md`.
 - Do not use a video-diffusion pass on UI, type, or logos. Abstract background texture is the only place it is allowed.

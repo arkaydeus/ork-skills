@@ -26,7 +26,7 @@ Example grid for a 12-second inbox reel:
 | 90 | offbeat | first reply stacks | short click |
 | 120–180 | build | second reply, settle | rising noise, then a drop when the panel resolves |
 
-Place each hit **one frame early** (about 17 ms at 60 fps). The ear leads the eye; a hit on the same frame as the impact feels late.
+The Sound column names the event. Place each hit **one frame after the picture** (about 17 ms at 60 fps), so the tick for the frame-0 picture starts at frame 1. The first peak of each tone sits on **frame+1**, not on the impact frame. A hit that leads the picture reads as a mistake sooner than one that follows it.
 
 ## Synthesise, do not license
 
@@ -51,7 +51,7 @@ window.renderAudio = async () => {
   const sampleRate = 48000;
   const ctx = new OfflineAudioContext(2, sampleRate * DURATION, sampleRate);
   for (let beat = 0; beat < DURATION; beat++) {
-    const t0 = Math.max(0, beat - 1 / 60);
+    const t0 = beat + 1 / 60;
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
     osc.frequency.value = 740;
@@ -104,11 +104,27 @@ function wavBase64(buf) {
 }
 ```
 
-`exponentialRampToValueAtTime` cannot take 0. Use `0.0001`. Schedule from `t0 >= 0`.
+`exponentialRampToValueAtTime` cannot take 0. Use `0.0001`. Schedule from `t0 >= 0`. Skip a hit whose `t0` is past `DURATION`.
+
+## QA by measurement
+
+The picture must work with the sound off. Feeds start muted.
+
+Do not score the bed by ear. Decode the muxed file and check numbers:
+
+| Check | Pass |
+| --- | --- |
+| Hit level | Each hit sits **3–6 dB** above the bed |
+| Spectrum | Energy concentrated in **200 Hz–6 kHz** (phone speakers; sub-bass is wasted) |
+| Sync | First peak of each tone exactly on **frame+1** |
+| True peak | Cap the WAV at about **−2.2 dBTP**. AAC encoding adds about **0.9 dB**, so a −1 dBTP WAV overshoots after mux |
+| Loop seam | **2 ms** fade at the first and last samples covers about **16 ms** of AAC padding |
+
+Fail the round if any row misses, even when the picture looks finished. See `references/critique.md`.
 
 ## Loudness
 
-Aim for about **−14 LUFS** integrated, true peaks under **−1 dBTP**. Common social and streaming target. Check current platform docs if the client has a spec.
+Aim for about **−14 LUFS** integrated. Cap the WAV at about **−2.2 dBTP** (AAC adds about 0.9 dB); the muxed file can still target true peaks under **−1 dBTP**. Common social and streaming target. Check current platform docs if the client has a spec.
 
 ```bash
 ffmpeg -y -i out/scene.mp4 -i audio.wav -i music.wav -filter_complex \

@@ -41,6 +41,25 @@ Work principles in one at a time across critique rounds: anticipation first, the
 
 ## Staging still wins
 
-One hero action. Rank anything else. A blink during a jump is two ideas. Holds apply to characters too: after a landing, freeze the body long enough that the follow-through can read.
+One hero action. Rank anything else. A blink during a jump is two ideas. Everything that is not the hero holds still or dims to **40%**. Holds apply to characters too: after a landing, freeze the body long enough that the follow-through can read.
 
 For a looping mascot, every deform must return to the frame-0 pose by frame N−1. See `references/export.md`.
+
+## Secondary motion
+
+Rank supporting moves 1, 2, 3 so the model knows what to drop.
+
+- Secondary travel is **50–70%** of the hero's travel, and it starts **100–200 ms** after the hero.
+- Background motion stays under **5%** of that travel, on a slow sine, and does not stop.
+- Start the next element when the previous is **30–50%** done. All-at-once is cheap; fully sequential is robotic.
+- Staggers: **1 frame** per letter, **60–120 ms** per word, **40–80 ms** per list item.
+
+Tokens live in `references/maths.md`.
+
+## Timing
+
+Exits use ease-in and run **40–50%** shorter than the matching entrance. Enter with ease-out; move across the frame with ease-in-out. Linear is for spins, progress bars, and loop phase only.
+
+Cut on the beat. Change layout only every **4 beats**. During a hold, a slow **2%** push-in keeps the frame alive while type stays readable.
+
+Text hold = **0.3 s per word + 0.5 s** (a two-word title needs 1.1 s), not a flat 1.5 s floor. After a hero move, hold at least 0.5 s. End card 1–2 s.

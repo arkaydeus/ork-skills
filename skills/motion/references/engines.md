@@ -8,13 +8,14 @@ Capture for HTML scenes is `references/render.md`. Timing tokens are `references
 
 ## Decision
 
-1. 3D, or real light and materials? **three.js**.
-2. Mostly type and shapes, under about 15 seconds? **GSAP**, or **plain CSS** if it is simple.
-3. Long, data-driven, captioned, or many variants? **Remotion** (licence permitting) or **HyperFrames**.
-4. Already a React app, and the piece reuses components? **Motion** or **Remotion**.
-5. Unsure? Propose two engines with trade-offs, then choose.
+1. 3D, or real light and materials? **three.js**. Give CAMERA a **30–50°** FOV.
+2. One idea, type and shapes, under about **10 seconds**? **Plain HTML**.
+3. Complex 2D timelines, split text, SVG morph or line draw? **GSAP**.
+4. Long, data-driven, captioned, or many variants? **Remotion** (licence permitting) or **HyperFrames**.
+5. Already a React app, and the piece is live UI rather than a video? **Motion**.
+6. Unsure? Propose two engines with trade-offs, then choose.
 
-Do not start in three.js for a 2D dashboard. Do not start in Remotion for a 6-second chrome loop.
+Do not start in three.js for a 2D dashboard. Do not start in Remotion for a 6-second chrome loop. Do not pick Motion when you need an MP4: it has no video renderer.
 
 ## How the picture gets made
 
@@ -33,9 +34,9 @@ An overlay job still delivers the UI through drawn-in-code or a composition fram
 
 | Engine | Best for | How it seeks | Licence (verify) |
 | --- | --- | --- | --- |
-| Plain HTML/CSS | Type, shapes, UI mock-ups, simple 2D loops | Pause every animation and set `currentTime` | None |
-| GSAP | Complex 2D timelines, split text, SVG morph and line draw | One paused timeline; `tl.seek(t)` | Confirm current terms, including plugins (SplitText, MorphSVG, DrawSVG, ScrollTrigger) |
-| Motion (formerly Framer Motion) | React or vanilla JS with decent springs | Pausable controls; set time from `t` | MIT |
+| Plain HTML/CSS | A single idea under 10 s: type, shapes, UI mock-ups | Pause every animation and set `currentTime` | None |
+| GSAP | Complex 2D timelines, split text, SVG morph and line draw | One paused timeline; `tl.seek(t)` | Free, including plugins (SplitText, MorphSVG, DrawSVG, ScrollTrigger). The only restriction: do not build a no-code animation tool that competes with Webflow. Verify current terms. |
+| Motion (formerly Framer Motion) | Live React or vanilla UI with decent springs. No video renderer | Pausable controls; set time from `t` | MIT |
 | three.js | Materials, cameras, chrome, glass, product shots | Your `render(t)` sets object state and calls `renderer.render` | MIT |
 | Remotion | Longer React videos, data, templates, captions | Built in via `useCurrentFrame()`. Own CLI, not `capture.mjs` | Free for individuals and companies of up to 3 people; larger companies need a company licence |
 | HyperFrames | HTML compositions meant to be written by agents | Frame-accurate in its own renderer; follow its docs | Apache 2.0 |

@@ -56,7 +56,7 @@ The run ends only when all of these are true:
 - Playback duration matches `DURATION` within one frame
 - For loops: frame 0 and frame N−1 join without a stall
 - For story reels: the end card is still for the agreed hold
-- QA frames named in the brief have been described and, if scored, are at least 8/10
+- QA frames named in the brief have been described, the brief's numbers hold, and, if scored, polish is at least 8/10
 
 Missing MP4 is not "almost done".
 

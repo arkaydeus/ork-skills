@@ -14,15 +14,15 @@ Never step a spring with Euler (or any integrator that needs the previous frame'
 
 ## Easing
 
-Use a small named set. The JavaScript implementations below follow Robert Penner's easing equations (MIT / BSD; see `NOTICE.md`). Pair them with a CSS `cubic-bezier` or a GSAP named ease of the same family. Linear is right only for constant mechanical motion (a spin, a ticker).
+Use a small named set. The JavaScript implementations below follow Robert Penner's easing equations (MIT / BSD; see `NOTICE.md`). Pair each name with the CSS `cubic-bezier` control points in the table, or a GSAP named ease of the same family. The control points are numeric facts, not a copy of any site's table. `motion.js` remains the source of truth for `seek(t)`. Linear is right only for constant mechanical motion (a spin, a ticker).
 
-| Name | Feel | Use |
-| --- | --- | --- |
-| ease-out-expo | Fast start, long soft landing | Confident entrances |
-| ease-out-quint | Slightly gentler landing than expo | Default for anything arriving |
-| ease-in-out-quart | Ease at both ends | Moves that start and end at rest; camera moves |
-| ease-in-expo | Slow start, then a rush | Exits accelerating out of frame |
-| ease-out-back | About 10% overshoot | Once per shot at most |
+| Name | CSS cubic-bezier | Feel | Use |
+| --- | --- | --- | --- |
+| ease-out-expo | `0.16, 1, 0.3, 1` | Fast start, long soft landing | Confident entrances |
+| ease-out-quint | `0.22, 1, 0.36, 1` | Slightly gentler landing than expo | Default for anything arriving |
+| ease-in-out-quart | `0.76, 0, 0.24, 1` | Ease at both ends | Moves that start and end at rest; camera moves |
+| ease-in-expo | `0.7, 0, 0.84, 0` | Slow start, then a rush | Exits accelerating out of frame |
+| ease-out-back | `0.34, 1.56, 0.64, 1` | About 10% overshoot | Once per shot at most |
 
 GSAP names that sit close: `expo.out`, `power4.out` (quint), `power3.inOut` (quart), `expo.in`, `back.out`.
 
@@ -86,15 +86,15 @@ Pick ζ from the feel table, then `c = 2 ζ √k`. These `k` values are starting
 
 ## Durations, staggers, beats, camera
 
-Durations in milliseconds for interface work sit roughly in 100–500 ms: 100 ms reads as instant, small changes 200–300 ms, larger travel can run longer. Film-style hero moves may take 600–1000 ms. A single move longer than a second usually feels slow on social feeds. Exits can be shorter than entrances.
+Durations in milliseconds for interface work sit roughly in 100–500 ms: 100 ms reads as instant, small changes 200–300 ms, larger travel can run longer. Film-style hero moves may take 600–1000 ms. A single move longer than a second usually feels slow on social feeds. Exits ease-in and run **40–50%** shorter than the matching entrance.
 
-Staggers: 30–80 ms between items. If there are many items, shrink the gap so the whole sequence stays under about 500 ms.
+Staggers: **1 frame** per letter, **60–120 ms** per word, **40–80 ms** per list item. Start the next element when the previous is 30–50% done. If there are many items, shrink the gap so the whole sequence stays under about 500 ms.
 
-Beat grid: frames per beat = `fps × 60 / BPM`. At 60 fps and 120 BPM a beat is 30 frames (0.5 s). Put hero hits on beats, secondary hits on half-beats. Compute each beat from time; do not add a rounded frame count repeatedly or the grid drifts. See `references/sound.md`.
+Beat grid: frames per beat = `fps × 60 / BPM`. At 60 fps and 120 BPM a beat is 30 frames (0.5 s). Put hero hits on beats, secondary hits on half-beats. Cut on the beat; change layout only every **4 beats**. Compute each beat from time; do not add a rounded frame count repeatedly or the grid drifts. See `references/sound.md`.
 
-Holds: at least 0.5 s after a hero move; text still long enough to read twice (1.5 s is a floor); end card 1–2 s.
+Holds: at least 0.5 s after a hero move; text still for **0.3 s per word + 0.5 s** (a two-word title needs 1.1 s); end card 1–2 s. During a hold, a slow **2%** push-in keeps the frame alive.
 
-Camera: ease-in-out curves, travel 2–4% of frame. Parallax layers at about 1.0×, 0.5×, 0.2×. Do not run a large camera move and a large subject move together.
+Camera: ease-in-out curves, travel 2–4% of frame. Parallax layers at about 1.0×, 0.5×, 0.2×. Do not run a large camera move and a large subject move together. Character staging, secondary-motion ranks, and the same timing rules in prompt form live in `references/principles.md`.
 
 Accessibility that also makes better video: contrast at least 4.5:1 for normal text (3:1 large); nothing flashing more than three times in any one second. Those floors come from WCAG.
 

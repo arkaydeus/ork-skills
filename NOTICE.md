@@ -150,16 +150,16 @@ Ideas we rewrote: a diff-scoped security pass that prefers exploitable bugs over
 
 `motion` (`skills/motion/`) is original MIT text. We read public write-ups for **ideas** (code-first `seek(t)` capture, a directed brief, banned defaults, closed-form springs, a critique loop, synthesised sound on a beat grid, a workspace fence, quoting from scope). We did not copy their files, wording, prompts, or scripts.
 
-Licences below were checked against each source on 2026-11-01.
+Licences below were checked against each source on 2026-11-01. GSAP's current free-including-plugins terms were re-checked on 2026-11-03.
 
 ### Florence (@flxrnc)
 
 - Article: [Opus 5.5 Motion Lab: Make Claude Animate Like a Studio](https://x.com/flxrnc/article/2105311836190978392)
 - Licence: none published (X article)
 
-**Ideas only. No text.** Ideas we rewrote: a directed brief with named fields; a capture contract so every frame is a function of time; banned AI-motion defaults; one hero per shot; a render-look-fix loop on real frames; engine picking; loop frames 0…N−1; GIF delay rounding.
+**Ideas only. No text.** Ideas we rewrote: a directed brief with named fields; a capture contract so every frame is a function of time; banned AI-motion defaults; one hero per shot; a render-look-fix loop on real frames; engine picking; loop frames 0…N−1; GIF delay rounding; sound one frame after the picture; secondary-motion ratios; numeric critique gates.
 
-We did not vendor that article's prompts, `render.mjs`, freeze snippet, contact-sheet commands as printed, or cubic-bezier table.
+We did not vendor that article's prompts, `render.mjs`, freeze snippet, contact-sheet commands as printed, or any article table or script. CSS `cubic-bezier` control points in `maths.md` are numeric facts next to Penner's names, not a copy of that article's easing table.
 
 ### damkin (@damkina7)
 
@@ -212,11 +212,11 @@ SOFTWARE.
 - Project: [ai/easings.net](https://github.com/ai/easings.net)
 - Licence: GPL-3.0
 
-**No snippets and no cubic-bezier table.** That site is copyleft. We did not vendor its YAML, CSS approximations, or prose. Named eases in `maths.md` are Penner's, with GSAP family names as a crosswalk.
+**No snippets and no table copy.** That site is copyleft. We did not vendor its YAML, CSS, or prose. Named eases in `maths.md` are Penner's equations. CSS `cubic-bezier` control points sit next to those names as numeric facts, not Sitnik's table or wording.
 
 ### Other facts, not files
 
-Engine licence lines in `references/engines.md` (GSAP, Motion/MIT, three.js/MIT, Remotion company licence, HyperFrames Apache-2.0) are current-terms reminders, not copies of those projects. Contrast floors 4.5:1 / 3:1 and the three-flashes-per-second cap are WCAG figures, cited as numbers only.
+Engine licence lines in `references/engines.md` (GSAP now free including plugins, with a no-code/Webflow restriction; Motion/MIT and no video renderer; three.js/MIT; Remotion company licence; HyperFrames Apache-2.0) are current-terms reminders, not copies of those projects. Contrast floors 4.5:1 / 3:1 and the three-flashes-per-second cap are WCAG figures, cited as numbers only.
 
 ## What we left out
 

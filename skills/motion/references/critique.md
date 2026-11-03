@@ -39,9 +39,13 @@ For each checkpoint, answer:
    minimal patch (constants and the functions to change), not a rewrite.
 ```
 
-If the score is below 8, patch and re-capture. If it is 8 or above, encode the master. Two automated passes should have cleared type collisions, margin clipping, and lopsided transitions before a human watches the export.
+If the score is below 8, patch and re-capture. If it is 8 or above, still fail the round when a number from the brief is off (landing frame, hold length, roughness, FOV). That numeric check is a stronger gate than the visual score. Two automated passes should have cleared type collisions, margin clipping, and lopsided transitions before a human watches the export.
 
-Do not treat 8/10 as taste. It is a gate for collisions and settling. Taste still needs a person.
+Do not treat 8/10 as taste. It is a gate for collisions and settling. Taste still needs a person. The brief's numbers are not optional.
+
+During iteration, draw a frame counter, a playhead, and labels for the beats or principles you are checking. Turn them off for the final capture. See `references/render.md`.
+
+If a patch does not hold, capture frames **N−1** and **N+1** (the neighbours of the broken frame), put them side by side, and name every visible difference. Fix the line that caused it, then re-capture those two frames. When the fix holds, add the rule to the capture contract in `references/render.md` so the next piece starts with it.
 
 Overnight runs that iterate this loop need the stop conditions in `references/harness.md`. Unbounded "try again" is how the bill explodes.
 
@@ -52,12 +56,12 @@ Copy the shape, not the subject.
 - "Raise roughness from 0.05 to 0.12; the chrome reads as a mirror, not metal."
 - "Make the glint a single narrow highlight that crosses in 1.2 s, not a wide wash."
 - "Stagger letters 80 ms apart, left to right, instead of all at once."
-- "Hold the final composition still for 1.5 s before the loop resets."
+- "Hold the final composition still for 0.3 s per word + 0.5 s before the loop resets."
 - "Move the horizon down to 62% of frame height so the word sits above centre."
 - "Replace the linear camera move with ease-in-out-quart, and halve its distance."
 - "Secondary motion 3 is competing with the hero; cut its amplitude by 60%."
 - "Add a 6-frame anticipation dip before each letter rises."
-- "Give it sound: synthesise in Web Audio, a soft low hit for each letter, landing one frame before it breaks the surface."
+- "Give it sound: synthesise in Web Audio, a soft low hit for each letter, landing one frame after it breaks the surface."
 - "Show frames 0, 90 and 359 side by side and confirm the loop is seamless."
 - "Explain what you changed and which constants control it."
 
@@ -72,8 +76,8 @@ Copy the shape, not the subject.
 | "Looks cheap / plastic." | Environment map, one key plus one rim, roughness 0.10–0.20, no glow. |
 | "No energy." | Anticipation: 5 frames, 4% the opposite way; overshoot 3–5% on landing. |
 | "Harsh landing." | ease-out-quint, or a spring at damping ratio 0.7. |
-| "Cannot read the text." | Hold text still at least 1.5 s; contrast at least 4.5:1. |
+| "Cannot read the text." | Hold text still 0.3 s per word + 0.5 s; contrast at least 4.5:1. |
 | "Camera feels dead." | Dolly 2–4%; background layer at 0.3× the foreground. |
 | "The loop jumps." | Frames 0…N−1; whole cycles in `DURATION`; N−1 matches 0. |
 
-Also fail the round (do not mark polish 8) when: white text on light cards; metric cards still moving when the headline arrives; a logo fading to black as the ending; everything entering with the same fade-and-slide-up.
+Also fail the round (do not mark polish 8) when: white text on light cards; dark type on a dark field; metric cards still moving when the headline arrives; a logo fading to black as the ending; everything entering with the same fade-and-slide-up; neon, glow orbs, or a spinning turntable that was not in the brief.
