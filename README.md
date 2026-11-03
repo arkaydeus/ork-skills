@@ -2,7 +2,7 @@
 
 Ork's software engineering skills for Claude Code, Codex, Cursor, Grok Build and other agents that read the Agent Skills format.
 
-The set is twenty-five skills. Ten run only when you name them. Fifteen fire from their descriptions when the work matches. They share a small set of artefacts in the *target* project, not in this repository: `docs/decisions/`, `docs/plans/`, `docs/handoffs/` and `docs/terms.md`.
+The set is twenty-six skills. Ten run only when you name them. Sixteen fire from their descriptions when the work matches. They share a small set of artefacts in the *target* project, not in this repository: `docs/decisions/`, `docs/plans/`, `docs/handoffs/` and `docs/terms.md`.
 
 There is no install script and no per-tool plugin tree. Install with the [skills CLI](https://github.com/vercel-labs/skills). Tool names differ by harness; see [docs/tool-mapping.md](docs/tool-mapping.md).
 
@@ -35,6 +35,7 @@ There is no install script and no per-tool plugin tree. Install with the [skills
 | `security-supply-chain` | Auto | Lockfiles, typosquats, install scripts, Actions |
 | `security-threat-model` | Auto | Assets, actors, boundaries, STRIDE, checklist |
 | `website-audit` | Auto | Live-URL pass/warn/fail launch and SEO report with fixes |
+| `motion` | Auto | Code-first animation: seekable program, capture, encode, critique |
 
 User-invoked skills say so in their `description` and should not be started unless you named them. Auto skills carry the when-to-use text the agent matches against.
 
@@ -62,12 +63,13 @@ npx skills add arkaydeus/ork-skills --skill security
 
 Add each sibling the same way (`--skill security-review`, `security-audit`, `security-scan`, `security-supply-chain`, `security-threat-model`) or install the whole set as above.
 
-`unslop`, `bun-testing`, or `website-audit` only:
+`unslop`, `bun-testing`, `website-audit`, or `motion` only:
 
 ```bash
 npx skills add arkaydeus/ork-skills --skill unslop
 npx skills add arkaydeus/ork-skills --skill bun-testing
 npx skills add arkaydeus/ork-skills --skill website-audit
+npx skills add arkaydeus/ork-skills --skill motion
 ```
 
 Add `-g` to install for your user rather than the current repo. Use skills CLI 1.7.2 or later if you need `-a grok`. The CLI copies or links each `skills/<name>/` folder into the agent directories it knows about: `.grok/skills/` for Grok Build, `.claude/skills/` for Claude Code, and `.agents/skills/` for Cursor and Codex.
@@ -91,8 +93,9 @@ The methods are a rewrite in our own words, not a copy of another skill file, ex
 
 - [pstack](https://github.com/cursor/plugins/tree/main/pstack) (MIT, © 2026 Lauren Tan), in particular playbooks as a todo list with skipped steps recorded, multi-model review with a lead verdict, durable guards after a correction, how/why explanation, verification against the real artefact, and the unslop pattern list.
 - [Matt Pocock's skills](https://github.com/mattpocock/skills) (MIT, © 2026 Matt Pocock), in particular round-based interviews with a recommended answer, a shared glossary, a two-axis review, a repro-first debug loop, and a harness-neutral `SKILL.md` layout.
+- Florence ([@flxrnc](https://x.com/flxrnc)) and damkin ([@damkina7](https://x.com/damkina7)), in particular code-first `seek(t)` capture, a directed brief, and a critique loop on real frames (ideas only; see [NOTICE.md](NOTICE.md)).
 
-See [NOTICE.md](NOTICE.md) for the mapping. Both projects are MIT-licensed; this set is a new work except for that pstack unslop adaptation. Security skills credit further sources there (ideas only; no copied text or scanner rules). `unslop` also credits [theclaymethod/unslop](https://github.com/theclaymethod/unslop) as inspiration only.
+See [NOTICE.md](NOTICE.md) for the mapping. pstack and Matt's skills are MIT-licensed; this set is a new work except for that pstack unslop adaptation. Security skills credit further sources there (ideas only; no copied text or scanner rules). `unslop` also credits [theclaymethod/unslop](https://github.com/theclaymethod/unslop) as inspiration only. `motion` credits Florence and damkin as ideas only, plus Robert Penner's MIT easing equations.
 
 ## Licence
 
